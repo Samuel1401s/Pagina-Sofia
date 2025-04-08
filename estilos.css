@@ -1,0 +1,161 @@
+/* vea los estilos que tienen la i al principio puede que sean los que solo estan destinados para ponerse en el index */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  height: 50px;
+  width: 100%;
+  text-align: center;
+}
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 234px;
+  background-color: #444;
+  color: white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 9999;
+}
+
+.menu-lateral.open {
+  transform: translateX(0);
+}
+
+.menu-lateral a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin: 15px 0;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.menu-lateral a:hover {
+  color: #ffcc00;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  z-index: 99999;
+}
+
+header.iheader {
+  position: relative;
+  background-image: ();
+  background-size: cover;
+  background-position: center;
+  height: 75px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header.iheader h1 {
+  font-size: 2.5rem;
+  margin: 7px;
+}
+
+.ilogo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  text-align: right;
+}
+
+.icarrusel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.carrusel-contenedor {
+  position: relative;
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
+
+.carrusel-items {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.carrusel-items img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin: 0 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.3s ease;
+}
+
+.carrusel-items img:hover {
+  border: 2px solid #333;
+}
+
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+
+.carrusel-btn.prev {
+  left: 10px;
+}
+
+.carrusel-btn.next {
+  right: 10px;
+}
+
+.carrusel-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.itextico {
+  width: 60px;
+  height: 80px;
+  box-shadow: #333 6px;
+  background-color: #ff0000;
+  align-self: center;
+  text-justify: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+}

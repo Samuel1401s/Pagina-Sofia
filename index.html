@@ -1,0 +1,59 @@
+<html lang="es">
+  <section class="iheader">
+    <header class="iheader">
+      <div>
+        <img src="logo.png" alt="Logo" class="ilogo" />
+        <h1>Bienvenido a mi Página</h1>
+      </div>
+    </header>
+  </section>
+  <head>
+    <script src="java.js"></script>
+    <link rel="stylesheet" href="estilos.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Páginaaaaaaaaaaaa</title>
+  </head>
+  <body>
+    <section>
+      <p class="itextico">Buenas tardes</p>
+    </section>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <div class="menu-lateral" id="menuLateral">
+      <a href="#">Inicio</a>
+      <a href="#">Acerca de</a>
+      <a href="#">Servicios</a>
+      <a href="#">Contacto</a>
+    </div>
+
+    <section class="icarrusel">
+      <div class="carrusel-contenedor">
+        <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">
+          &#10094;
+        </button>
+        <div class="carrusel-items">
+          <img
+            src="imagen1.jpg"
+            alt="Imagen 1"
+            onclick="alert('Botón Imagen 1')"
+          />
+          <img
+            src="imagen2.jpg"
+            alt="Imagen 2"
+            onclick="alert('Botón Imagen 2')"
+          />
+          <img
+            src="imagen3.jpg"
+            alt="Imagen 3"
+            onclick="alert('Botón Imagen 3')"
+          />
+        </div>
+        <button class="carrusel-btn next" onclick="moverCarrusel(1)">
+          &#10095;
+        </button>
+      </div>
+    </section>
+  </body>
+</html>
