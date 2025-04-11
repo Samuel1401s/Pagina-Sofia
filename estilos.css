@@ -3,12 +3,6 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
-
-header {
-  height: 50px;
-  width: 100%;
-  text-align: center;
-}
 .menu-lateral {
   position: fixed;
   top: 0;
@@ -65,12 +59,13 @@ header.iheader {
   background-image: ();
   background-size: cover;
   background-position: center;
-  height: 75px;
+  background-color: rgb(186, 255, 255);
   color: rgb(0, 0, 0);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 70;
 }
 
 header.iheader h1 {
@@ -158,4 +153,5 @@ header.iheader h1 {
   text-align: center;
   align-items: center;
   position: relative;
+  margin-top: -1px;
 }
