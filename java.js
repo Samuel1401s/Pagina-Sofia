@@ -16,3 +16,4 @@ function toggleMenu() {
         const desplazamiento = -indiceActual * carruselItems.children[0].offsetWidth;
         carruselItems.style.transform = `translateX(${desplazamiento}px)`;
     }
+    

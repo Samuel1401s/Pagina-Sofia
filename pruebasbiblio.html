@@ -4,13 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="java.js"></script>
   <body>
     <section>
     <section class="biografia">
       <div class="bio-contenedor">
         <img
           src="imagen-biografia.jpg"
-          alt="Foto de la persona"
+          alt="Foto "
           class="bio-imagen"
         />
         <div class="bio-texto">
@@ -249,6 +251,14 @@
           .bio-botones-tercera button:hover {
             background-color: #e64a19;
           }</style>
+           <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+           <div class="menu-lateral" id="menuLateral">
+             <a href="index.html">Inicio</a>
+             <a href="productos.html">Productos</a>
+             <a href="pruebasbiblio.html">pruebasbiblio</a>
+             <a href="pruebascarru.html">pruebascarru</a>
+           </div>
         
       </section>
     </body>

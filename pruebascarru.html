@@ -1,88 +1,294 @@
-<section class="carrusel-simple">
-  <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">&#10094;</button>
-  <div class="carrusel-items">
-    <img src="https://via.placeholder.com/600x400?text=Imagen+1" alt="Imagen 1">
-    <img src="Imagenes/tipos-de-archivos-de-imagen.png" alt="Imagen 2">
-    <img src="Imagenes/tipos-de-archivos-de-imagen.png" alt="Imagen 3">
-    <img src="Imagenes/tipos-de-archivos-de-imagen.png" alt="Imagen4">
-  </div>
-  <button class="carrusel-btn next" onclick="moverCarrusel(1)">&#10095;</button>
-</section>
-  <style>
-    .carrusel-simple {
-  position: relative;
-  width: 600px; 
-  margin: auto;
-  overflow: hidden; 
-}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carruseles</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <script src="java.js"></script>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-.carrusel-items {
-  display: flex;
-  width: 100%;
-}
+    <div class="menu-lateral" id="menuLateral">
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Productos</a>
+      <a href="pruebasbiblio.html">pruebasbiblio</a>
+      <a href="pruebascarru.html">pruebascarru</a>
+    </div>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        padding-top: 20px;
+      }
 
-.carrusel-items img {
-  display: none; 
-  width: 100%; 
-  height: 400px;
-  object-fit: cover; 
-}
+      .carrusel-simple {
+        position: relative;
+        width: 600px;
+        margin: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
 
-.carrusel-items img.active {
-  display: block; 
-}
+      .carrusel-items {
+        display: flex;
+        width: 100%;
+      }
 
-.carrusel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  border-radius: 50%;
-  z-index: 10;
-}
+      .carrusel-items img {
+        display: none;
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
 
-.carrusel-btn.prev {
-  left: 10px;
-}
+      .carrusel-items img.active {
+        display: block;
+      }
 
-.carrusel-btn.next {
-  right: 10px;
-}
+      .carrusel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        z-index: 10;
+      }
 
-.carrusel-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
+      .carrusel-btn.prev {
+        left: 10px;
+      }
 
-  </style>
-  <script>
- let indiceActual = 0;
+      .carrusel-btn.next {
+        right: 10px;
+      }
 
-function moverCarrusel(direccion) {
-  const imagenes = document.querySelectorAll('.carrusel-items img');
-  const totalItems = imagenes.length;
+      .carrusel-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
 
-  // Oculta la imagen actual
-  imagenes[indiceActual].classList.remove('active');
+      .carrusel-horizontal {
+        position: relative;
+        width: 600px;
+        margin: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
 
-  // Actualiza el índice actual
-  indiceActual += direccion;
+      .carrusel-items-horizontal {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
 
- 
-  if (indiceActual < 0) {
-    indiceActual = totalItems - 1;
-  } else if (indiceActual >= totalItems) {
-    indiceActual = 0;
-  }
+      .carrusel-items-horizontal img {
+        width: 600px;
+        height: 400px;
+        object-fit: cover;
+      }
 
-  imagenes[indiceActual].classList.add('active');
-}
+      .carrusel-indicadores {
+        position: relative;
+        width: 600px;
+        margin: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
 
+      .carrusel-items-indicadores {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
 
-document.querySelectorAll('.carrusel-items img')[0].classList.add('active');
-  </script>
-</section>
+      .carrusel-items-indicadores img {
+        width: 600px;
+        height: 400px;
+        object-fit: cover;
+      }
+
+      .carrusel-indicadores-botones {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .carrusel-indicadores-botones button {
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        background-color: #ccc;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .carrusel-indicadores-botones button.active {
+        background-color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="carrusel-simple">
+      <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">
+        &#10094;
+      </button>
+      <div class="carrusel-items">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 1"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 2"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 3"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 4"
+        />
+      </div>
+      <button class="carrusel-btn next" onclick="moverCarrusel(1)">
+        &#10095;
+      </button>
+    </section>
+
+    <section class="carrusel-horizontal">
+      <button class="carrusel-btn prev" onclick="moverCarruselHorizontal(-1)">
+        &#10094;
+      </button>
+      <div class="carrusel-items-horizontal">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 1"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 2"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 3"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 4"
+        />
+      </div>
+      <button class="carrusel-btn next" onclick="moverCarruselHorizontal(1)">
+        &#10095;
+      </button>
+    </section>
+
+    <section class="carrusel-indicadores">
+      <div class="carrusel-items-indicadores">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 1"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 2"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 3"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+          alt="Imagen 4"
+        />
+      </div>
+      <div class="carrusel-indicadores-botones">
+        <button onclick="cambiarImagen(0)"></button>
+        <button onclick="cambiarImagen(1)"></button>
+        <button onclick="cambiarImagen(2)"></button>
+        <button onclick="cambiarImagen(3)"></button>
+      </div>
+    </section>
+    <br />
+    <br />
+
+    <script>
+      let indiceActual = 0;
+
+      function moverCarrusel(direccion) {
+        const imagenes = document.querySelectorAll(".carrusel-items img");
+        const totalItems = imagenes.length;
+
+        imagenes[indiceActual].classList.remove("active");
+        indiceActual += direccion;
+
+        if (indiceActual < 0) {
+          indiceActual = totalItems - 1;
+        } else if (indiceActual >= totalItems) {
+          indiceActual = 0;
+        }
+
+        imagenes[indiceActual].classList.add("active");
+      }
+
+      document
+        .querySelectorAll(".carrusel-items img")[0]
+        .classList.add("active");
+
+      let indiceHorizontal = 0;
+
+      function moverCarruselHorizontal(direccion) {
+        const carruselItems = document.querySelector(
+          ".carrusel-items-horizontal"
+        );
+        const totalItems = carruselItems.children.length;
+
+        indiceHorizontal += direccion;
+
+        if (indiceHorizontal < 0) {
+          indiceHorizontal = totalItems - 1;
+        } else if (indiceHorizontal >= totalItems) {
+          indiceHorizontal = 0;
+        }
+
+        const desplazamiento = -indiceHorizontal * 600;
+        carruselItems.style.transform = `translateX(${desplazamiento}px)`;
+      }
+
+      let indiceIndicadores = 0;
+
+      function cambiarImagen(indice) {
+        const carruselItems = document.querySelector(
+          ".carrusel-items-indicadores"
+        );
+        const botones = document.querySelectorAll(
+          ".carrusel-indicadores-botones button"
+        );
+
+        indiceIndicadores = indice;
+
+        const desplazamiento = -indice * 600;
+        carruselItems.style.transform = `translateX(${desplazamiento}px)`;
+
+        botones.forEach((boton, i) => {
+          boton.classList.toggle("active", i === indice);
+        });
+      }
+
+      document
+        .querySelectorAll(".carrusel-indicadores-botones button")[0]
+        .classList.add("active");
+    </script>
+  </body>
+</html>
