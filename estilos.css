@@ -1,8 +1,12 @@
-/* vea los estilos que tienen la i al principio puede que sean los que solo estan destinados para ponerse en el index */
+html {
+  background-color: #c8c8c8;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+
 .menu-lateral {
   position: fixed;
   top: 0;
@@ -41,7 +45,7 @@ body {
 }
 
 .menu-btn {
-  position: fixed;
+  position: absolute;
   top: 10px;
   right: 10px;
   background-color: #333;
@@ -55,84 +59,94 @@ body {
 }
 
 header.iheader {
-  position: relative;
-  background-image: ();
-  background-size: cover;
-  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
   background-color: rgb(186, 255, 255);
   color: rgb(0, 0, 0);
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 70;
 }
 
 header.iheader h1 {
   font-size: 2.5rem;
-  margin: 7px;
+  margin: 0;
 }
 
+header.iheader h1 {
+  font-size: 2.5rem;
+  margin: 0 10px;
+  text-align: center;
+}
 .ilogo {
-  position: absolute;
-  top: 10px;
-  left: 10px;
   width: 50px;
   height: 50px;
-  text-align: right;
 }
 
-/* Carrusel Horizontal */
-.carrusel-horizontal {
-  position: relative;
-  width: 600px; /* Ancho del carrusel */
-  margin: auto;
-  overflow: hidden; /* Oculta las imágenes fuera del área visible */
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para el carrusel */
-  background-color: #f9f9f9; /* Fondo del carrusel */
-}
-
-.carrusel-items-horizontal {
+.logo-titulo {
   display: flex;
-  transition: transform 0.5s ease-in-out; /* Transición suave al cambiar de imagen */
+  align-items: center;
+  position: absolute;
+  left: 10px;
 }
 
-.carrusel-items-horizontal img {
-  width: 600px; /* Ancho de cada imagen */
-  height: 400px; /* Alto fijo para las imágenes */
-  object-fit: cover; /* Ajusta la imagen sin deformarla */
-  border-radius: 10px; /* Bordes redondeados para las imágenes */
+.carrusel {
+  position: relative;
+  width: 600px;
+  width: 800px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
 }
 
-/* Botones de navegación */
+.carrusel-items {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carrusel-items img {
+  width: 800px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  position: absolute;
+}
+
+.carrusel-items img.active {
+  opacity: 1;
+  position: relative;
+}
+
 .carrusel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   padding: 15px;
   cursor: pointer;
   font-size: 1.5rem;
-  border-radius: 50%; /* Botones redondeados */
+  border-radius: 50%;
   z-index: 10;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .carrusel-btn.prev {
-  left: 10px; /* Botón izquierdo */
+  left: 10px;
 }
 
 .carrusel-btn.next {
-  right: 10px; /* Botón derecho */
+  right: 10px;
 }
 
 .carrusel-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro al pasar el mouse */
-  transform: scale(1.1); /* Efecto de agrandamiento */
+  background-color: rgba(0, 0, 0, 0.8);
 }
+
 .itextico {
   display: flex;
   width: 100%;
@@ -143,8 +157,9 @@ header.iheader h1 {
   text-align: center;
   align-items: center;
   position: relative;
-  margin-top: -1px;
+  margin-top: 1px;
 }
+
 .productos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -184,4 +199,45 @@ header.iheader h1 {
   margin: 0 10px 10px;
   font-size: 0.9rem;
   color: #666;
+}
+
+.ibiografia {
+  background-color: #c91919;
+  padding: 20px;
+  padding-top: -10px;
+  margin: 20px auto;
+  width: 1080px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.ibiografia h3 {
+  text-align: center;
+  color: #fff;
+  margin: 0;
+  margin-top: 7px;
+}
+
+.ibiografia h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  margin-top: 0;
+  margin: 0;
+}
+
+.ibiografia p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+}
+.ibiografia-foto {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+.ibiografia-contenido {
+  display: flex;
+  align-items: center;
 }

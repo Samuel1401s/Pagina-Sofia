@@ -1,58 +1,73 @@
+<!DOCTYPE html>
 <html lang="es">
-  <section class="iheader">
-    <header class="iheader">
-      <div>
-        <img src="logo.png" alt="Logo" class="ilogo" />
-        <h1></h1>
-      </div>
-    </header>
-  </section>
   <head>
-    <script src="java.js"></script>
-    <link rel="stylesheet" href="estilos.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Páginaaaaaaaaaaaa</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <script src="java.js" defer></script>
   </head>
   <body>
-    <section>
-      <p class="itextico">Buenas tardes</p>
-      
-
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-    <div class="menu-lateral" id="menuLateral">
-      <a href="index.html">Inicio</a>
-      <a href="productos.html">Productos</a>
-      <a href="pruebasbiblio.html">pruebasbiblio</a>
-      <a href="pruebascarru.html">pruebascarru</a>
-    </div>
-
-    <section class="carrusel-horizontal">
-      <button class="carrusel-btn prev" onclick="moverCarruselHorizontal(-1)">
-        &#10094;
-      </button>
-      <div class="carrusel-items-horizontal">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 1"
-        />
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 2"
-        />
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 3"
-        />
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 4"
-        />
-      </div>
-      <button class="carrusel-btn next" onclick="moverCarruselHorizontal(1)">
-        &#10095;
-      </button>
+    <section class="iheader">
+      <header class="iheader">
+        <div class="logo-titulo">
+          <img src="logo.png" alt="Logo" class="ilogo" />
+        </div>
+        <h1>Holaaaa</h1>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      </header>
     </section>
+    <section>
+      <section class="ibiografia">
+        <div class="ibiografia-contenido">
+          <img
+            src="Imagenes/tipos-de-archivos-de-imagen.png"
+            alt="Tu Foto"
+            class="ibiografia-foto"
+          />
+          <div class="biografia-texto">
+            <h2>Psicologa Infantil</h2>
+            <h3>sans-serif</h3>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis
+              quo tempora ullam, vero eum debitis! Maiores est soluta, modi nam
+              vel itaque iusto illo explicabo perferendis tempora, unde, nihil
+              quidem.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="menu-lateral" id="menuLateral">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="pruebasbiblio.html">pruebasbiblio</a>
+        <a href="pruebascarru.html">pruebascarru</a>
+      </div>
+      <section class="carrusel">
+        <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">
+          &#10094;
+        </button>
+        <div class="carrusel-items">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+            alt="Imagen 1"
+          />
+          <img src="Imagenes/tipos-de-archivos-de-imagen.png" alt="Imagen 2" />
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+            alt="Imagen 3"
+          />
+          <img src="Imagenes/" alt="Imagen 4" />
+        </div>
+        <button class="carrusel-btn next" onclick="moverCarrusel(1)">
+          &#10095;
+        </button>
+      </section>
+    </section>
+    <br />
+    <br />
+    <br />
   </body>
 </html>
