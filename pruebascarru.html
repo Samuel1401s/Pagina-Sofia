@@ -1,58 +1,107 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carruseles</title>
-    <link rel="stylesheet" href="estilos.css" />
-    <script src="java.js"></script>
+  <header class="iheader">
+    <div class="logo-titulo">
+      <img src="logo.png" alt="Logo" class="ilogo" />
+    </div>
+    <h1>Holaaaa</h1>
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
     <div class="menu-lateral" id="menuLateral">
       <a href="index.html">Inicio</a>
       <a href="productos.html">Productos</a>
       <a href="pruebasbiblio.html">pruebasbiblio</a>
       <a href="pruebascarru.html">pruebascarru</a>
     </div>
+  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carruseles Diferentes</title>
+
+    <script src="java.js" defer></script>
     <style>
       body {
         font-family: Arial, sans-serif;
         margin: 0;
-        padding: 0;
         background-color: #f4f4f4;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 50px;
-        padding-top: 20px;
       }
 
-      .carrusel-simple {
+      .carousel-sencillo-container {
+        width: 400px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         position: relative;
-        width: 600px;
-        margin: auto;
+      }
+
+      .carousel-sencillo-slide {
+        display: none;
+      }
+
+      .carousel-sencillo-slide img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .carousel-sencillo-slide.active {
+        display: block;
+      }
+
+      .carousel-desplazamiento-container {
+        width: 700px;
+        height: 300px;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        background-color: #fff;
+      }
+
+      .carousel-desplazamiento-container img {
+        display: inline-block;
+        width: 250px;
+        height: auto;
+        object-fit: cover;
+        margin-right: 10px;
+        border-radius: 5px;
+      }
+
+      .carousel-transicion-container {
+        position: relative;
+        width: 500px;
+        height: 300px;
         overflow: hidden;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
 
-      .carrusel-items {
-        display: flex;
+      .carousel-transicion-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
       }
 
-      .carrusel-items img {
-        display: none;
+      .carousel-transicion-slide img {
         width: 100%;
-        height: 400px;
+        height: 100%;
         object-fit: cover;
       }
 
-      .carrusel-items img.active {
-        display: block;
+      .carousel-transicion-slide.active {
+        opacity: 1;
       }
 
-      .carrusel-btn {
+      .carousel-sencillo-btn {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -66,229 +115,210 @@
         z-index: 10;
       }
 
-      .carrusel-btn.prev {
+      .carousel-sencillo-btn.prev {
         left: 10px;
       }
 
-      .carrusel-btn.next {
+      .carousel-sencillo-btn.next {
         right: 10px;
       }
 
-      .carrusel-btn:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-      }
-
-      .carrusel-horizontal {
-        position: relative;
-        width: 600px;
-        margin: auto;
-        overflow: hidden;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .carrusel-items-horizontal {
+      /* Estilos del menú lateral */
+      .menu-lateral {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 180px;
+        height: 234px;
+        background-color: #444;
+        color: white;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        padding: 20px;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
         display: flex;
-        transition: transform 0.5s ease-in-out;
+        flex-direction: column;
+        align-items: flex-start;
+        z-index: 9999;
       }
 
-      .carrusel-items-horizontal img {
-        width: 600px;
-        height: 400px;
-        object-fit: cover;
+      .menu-lateral.open {
+        transform: translateX(0);
       }
 
-      .carrusel-indicadores {
-        position: relative;
-        width: 600px;
-        margin: auto;
-        overflow: hidden;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      .menu-lateral a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        margin: 15px 0;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
       }
 
-      .carrusel-items-indicadores {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
+      .menu-lateral a:hover {
+        color: #ffcc00;
       }
 
-      .carrusel-items-indicadores img {
-        width: 600px;
-        height: 400px;
-        object-fit: cover;
-      }
-
-      .carrusel-indicadores-botones {
+      header.iheader {
         display: flex;
         justify-content: center;
-        margin-top: 10px;
+        align-items: center;
+        width: 100%;
+        height: 75px;
+        background-color: rgb(186, 255, 255);
+        color: rgb(0, 0, 0);
+        position: relative; /* Asegura que el header sea un contenedor relativo */
       }
 
-      .carrusel-indicadores-botones button {
-        width: 10px;
-        height: 10px;
-        margin: 0 5px;
-        background-color: #ccc;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
+      header.iheader h1 {
+        font-size: 2.5rem;
+        margin: 0 10px;
+        text-align: center;
       }
 
-      .carrusel-indicadores-botones button.active {
+      .ilogo {
+        width: 50px;
+        height: 50px;
+      }
+
+      .logo-titulo {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: 10px;
+      }
+
+      .menu-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
         background-color: #333;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        z-index: 99999;
       }
     </style>
   </head>
+
   <body>
-    <section class="carrusel-simple">
-      <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">
-        &#10094;
-      </button>
-      <div class="carrusel-items">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 1"
-        />
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 2"
-        />
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 3"
-        />
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 4"
-        />
-      </div>
-      <button class="carrusel-btn next" onclick="moverCarrusel(1)">
-        &#10095;
-      </button>
-    </section>
+    <section class="iheader"></section>
 
-    <section class="carrusel-horizontal">
-      <button class="carrusel-btn prev" onclick="moverCarruselHorizontal(-1)">
-        &#10094;
-      </button>
-      <div class="carrusel-items-horizontal">
+    <div class="carousel-sencillo-container">
+      <div class="carousel-sencillo-slide active">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
           alt="Imagen 1"
         />
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 2"
-        />
+      </div>
+      <div class="carousel-sencillo-slide">
+        <img src="Imagenes/tipos-de-archivos-de-imagen.png" alt="Imagen 2" />
+      </div>
+      <div class="carousel-sencillo-slide">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
           alt="Imagen 3"
         />
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 4"
-        />
       </div>
-      <button class="carrusel-btn next" onclick="moverCarruselHorizontal(1)">
-        &#10095;
+      <div class="carousel-sencillo-slide">
+        <img src="Imagenes/tipos-de-archivos-de-imagen.png" alt="Imagen 4" />
+      </div>
+      <button class="carousel-sencillo-btn prev" onclick="prevSlide()">
+        &lt;
       </button>
-    </section>
+      <button class="carousel-sencillo-btn next" onclick="nextSlide()">
+        &gt;
+      </button>
+    </div>
 
-    <section class="carrusel-indicadores">
-      <div class="carrusel-items-indicadores">
+    <div class="carousel-desplazamiento-container">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+        alt="Imagen 1"
+      />
+      <img src="Imagenes/tipos-de-archivos-de-imagen.png" alt="Imagen 2" />
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
+        alt="Imagen 3"
+      />
+      <img src="Imagenes/tipos-de-archivos-de-imagen.png" alt="Imagen 4" />
+    </div>
+
+    <div class="carousel-transicion-container">
+      <div class="carousel-transicion-slide active">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
           alt="Imagen 1"
         />
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 2"
-        />
+      </div>
+      <div class="carousel-transicion-slide">
+        <img src="Imagenes/tipos-de-archivos-de-imagen.png" alt="Imagen 2" />
+      </div>
+      <div class="carousel-transicion-slide">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
           alt="Imagen 3"
         />
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIvI1_Q8PI7Tsak9HIx2cK2ayLAcpwRqS7yQ&s"
-          alt="Imagen 4"
-        />
       </div>
-      <div class="carrusel-indicadores-botones">
-        <button onclick="cambiarImagen(0)"></button>
-        <button onclick="cambiarImagen(1)"></button>
-        <button onclick="cambiarImagen(2)"></button>
-        <button onclick="cambiarImagen(3)"></button>
+      <div class="carousel-transicion-slide">
+        <img src="Imagenes/tipos-de-archivos-de-imagen.png" alt="Imagen 4" />
       </div>
-    </section>
-    <br />
-    <br />
+    </div>
 
     <script>
-      let indiceActual = 0;
+      const carouselSencilloSlides = document.querySelectorAll(
+        ".carousel-sencillo-slide"
+      );
+      let carouselSencilloIndex = 0;
 
-      function moverCarrusel(direccion) {
-        const imagenes = document.querySelectorAll(".carrusel-items img");
-        const totalItems = imagenes.length;
-
-        imagenes[indiceActual].classList.remove("active");
-        indiceActual += direccion;
-
-        if (indiceActual < 0) {
-          indiceActual = totalItems - 1;
-        } else if (indiceActual >= totalItems) {
-          indiceActual = 0;
-        }
-
-        imagenes[indiceActual].classList.add("active");
+      function updateCarousel() {
+        carouselSencilloSlides.forEach((slide) =>
+          slide.classList.remove("active")
+        );
+        carouselSencilloSlides[carouselSencilloIndex].classList.add("active");
       }
 
-      document
-        .querySelectorAll(".carrusel-items img")[0]
-        .classList.add("active");
-
-      let indiceHorizontal = 0;
-
-      function moverCarruselHorizontal(direccion) {
-        const carruselItems = document.querySelector(
-          ".carrusel-items-horizontal"
-        );
-        const totalItems = carruselItems.children.length;
-
-        indiceHorizontal += direccion;
-
-        if (indiceHorizontal < 0) {
-          indiceHorizontal = totalItems - 1;
-        } else if (indiceHorizontal >= totalItems) {
-          indiceHorizontal = 0;
-        }
-
-        const desplazamiento = -indiceHorizontal * 600;
-        carruselItems.style.transform = `translateX(${desplazamiento}px)`;
+      function nextSlide() {
+        carouselSencilloIndex =
+          (carouselSencilloIndex + 1) % carouselSencilloSlides.length;
+        updateCarousel();
       }
 
-      let indiceIndicadores = 0;
-
-      function cambiarImagen(indice) {
-        const carruselItems = document.querySelector(
-          ".carrusel-items-indicadores"
-        );
-        const botones = document.querySelectorAll(
-          ".carrusel-indicadores-botones button"
-        );
-
-        indiceIndicadores = indice;
-
-        const desplazamiento = -indice * 600;
-        carruselItems.style.transform = `translateX(${desplazamiento}px)`;
-
-        botones.forEach((boton, i) => {
-          boton.classList.toggle("active", i === indice);
-        });
+      function prevSlide() {
+        carouselSencilloIndex =
+          (carouselSencilloIndex - 1 + carouselSencilloSlides.length) %
+          carouselSencilloSlides.length;
+        updateCarousel();
       }
 
-      document
-        .querySelectorAll(".carrusel-indicadores-botones button")[0]
-        .classList.add("active");
+      updateCarousel();
+
+      const carouselTransicionSlides = document.querySelectorAll(
+        ".carousel-transicion-slide"
+      );
+      let carouselTransicionIndex = 0;
+
+      function updateTransicionCarousel() {
+        carouselTransicionSlides.forEach((slide) =>
+          slide.classList.remove("active")
+        );
+        carouselTransicionSlides[carouselTransicionIndex].classList.add(
+          "active"
+        );
+      }
+
+      function nextTransicionSlide() {
+        carouselTransicionIndex =
+          (carouselTransicionIndex + 1) % carouselTransicionSlides.length;
+        updateTransicionCarousel();
+      }
+
+      setInterval(nextTransicionSlide, 3000);
     </script>
   </body>
 </html>
